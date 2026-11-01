@@ -33,3 +33,14 @@ function env(string $key, $default = null)
         ? $default
         : $value;
 }
+
+
+define('APP_NAME', env('APP_NAME', 'Sistem Inventaris Barang'));
+define('BASEURL', env('BASEURL', 'http://localhost:8000'));
+
+define('DB_HOST', env('DB_HOST', 'localhost'));
+define('DB_PORT', env('DB_PORT', '3306'));
+define('DB_NAME', env('DB_NAME', 'db_inventory'));
+define('DB_USER', env('DB_USER', 'root'));
+define('DB_PASS', env('DB_PASS', ''));
+
