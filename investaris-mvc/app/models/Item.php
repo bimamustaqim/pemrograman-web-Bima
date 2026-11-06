@@ -130,4 +130,21 @@ class Item extends Model
             'description' => $data['description'] ?: null,
         ]);
     }
+
+    // Menghitung jumlah seluruh barang.
+     public function totalBarang(): int
+    {
+        $stmt = $this->db->query("SELECT COUNT(*) FROM items");
+        return (int) $stmt->fetchColumn();
+    }   
+
+    // Menghitung total seluruh stok barang.
+    public function totalStok(): int
+    {
+         $stmt = $this->db->query(
+        "SELECT COALESCE(SUM(quantity), 0) FROM items"
+    );
+
+        return (int) $stmt->fetchColumn();
+    }
 }

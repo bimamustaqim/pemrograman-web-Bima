@@ -36,7 +36,7 @@ function env(string $key, $default = null)
 
 
 define('APP_NAME', env('APP_NAME', 'Sistem Inventaris Barang'));
-define('BASEURL', env('BASEURL', 'http://localhost:8000'));
+define('BASEURL', env('BASEURL', 'http://localhost:8001'));
 
 define('DB_HOST', env('DB_HOST', 'localhost'));
 define('DB_PORT', env('DB_PORT', '3306'));

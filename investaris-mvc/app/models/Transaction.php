@@ -65,12 +65,25 @@ class Transaction extends Model
             return true;
 
         } catch (PDOException $e) {
-            // Membatalkan perubahan jika terjadi kesalahan.
-            if ($this->db->inTransaction()) {
-                $this->db->rollBack();
-            }
+    // Mencatat error transaksi.
+    Logger::error('Transaksi stok gagal', [
+        'error' => $e->getMessage(),
+        'data' => $data
+    ]);
 
-            return false;
-        }
+    // Membatalkan perubahan jika terjadi kesalahan.
+    if ($this->db->inTransaction()) {
+        $this->db->rollBack();
+    }
+
+    return false;
+}
+    }
+
+        // Menghitung seluruh transaksi barang masuk dan keluar.
+    public function totalTransaksi(): int
+    {
+         $stmt = $this->db->query("SELECT COUNT(*) FROM transactions");
+        return (int) $stmt->fetchColumn();
     }
 }

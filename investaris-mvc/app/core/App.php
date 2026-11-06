@@ -39,8 +39,10 @@ class App {
         return [];
     }
 
-    private function notFound(): void {
-        http_response_code(404);
-        echo '<h1>404 Not Found</h1>';
-    }
+   private function notFound(): void
+{
+    http_response_code(404);
+
+    require ROOT_PATH . '/app/views/errors/404.php';
+}
 }
